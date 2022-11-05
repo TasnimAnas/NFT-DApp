@@ -4,7 +4,7 @@ Our problem statement is: In this modern era, most paper documents can be verifi
 
 # TECHNOLOGY USED
 1. Web Frontend - ReactJS
-2. Blockchain - <h3>Polygon</h3>
+2. <b>Blockchain - Polygon</b>
 3. Mobile: Flutter
 
 
