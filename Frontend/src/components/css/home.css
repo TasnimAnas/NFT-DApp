@@ -1,0 +1,36 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper{
+  background: linear-gradient(120deg,  #343A4F, #15172b);;
+  border-radius: 10px;
+  width: 69%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.seller,.customer{
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+img{
+  width: 42%;
+  height: 40%;
+}
+.margin-top-home{
+  margin-top: 2rem;
+}
+
+.seller:hover,.customer:hover{
+  background-color: rgb(233, 227, 227);
+}
