@@ -1,4 +1,9 @@
 ﻿# Devsprint_TECH-BLENDERS
+ 
+ ![image](https://user-images.githubusercontent.com/80065444/200169438-c453d582-368a-4169-9a17-03afd59f8b73.png)
+
+ 
+ 
 # PROJECT DETAILS
 Our problem statement is: In this modern era, most paper documents can be verified from the internet, saving people from being scammed. But the idea of re-selling some products is still a problem. For example re-selling of mobile phones, and electronic devices are pretty normal but the buyer has no option to verify if the seller is the actual owner or a fraud/theft. So, the idea to solve this is to create NFTs for each real-life product! As NFTs can't be copied/hacked we can verify who owns the NFT, thus who owns the actual product.
 
