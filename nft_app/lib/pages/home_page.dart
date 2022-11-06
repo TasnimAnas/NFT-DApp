@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:nft_app/pages/login_page.dart';
-import 'package:nft_app/utils/mint_nft.dart';
+
+import '../utils/mint_nft.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   TextEditingController _buyingDatecontroller = TextEditingController();
   TextEditingController _periodcontroller = TextEditingController();
   TextEditingController _descriptioncontroller = TextEditingController();
+  DateTime? buyDate = DateTime.now(), WarrantyFinish = DateTime.now();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -56,10 +58,14 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: TextFormField(
+                            keyboardType: TextInputType.number,
                             controller: _idcontroller,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter product ID';
+                              }
+                              if (!RegExp(r'^[0-9]*$').hasMatch(value)) {
+                                return "Only numeric values";
                               }
 
                               return null;
@@ -80,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                             controller: _namecontroller,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter email';
+                                return 'Please enter product name';
                               }
                               return null;
                             },
@@ -117,40 +123,60 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: TextFormField(
-                            enabled: false,
-                            controller: _buyingDatecontroller,
-                            decoration: InputDecoration(
-                              hintText: "DD/MM/YYYY",
-                              labelText:
-                                  'Date: ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
-                              labelStyle: const TextStyle(
-                                color: Color(0xFF979797),
-                              ),
-                              focusedBorder: const UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF66BF77)),
-                              ),
-                            ))),
+                          controller: _buyingDatecontroller,
+                          decoration: const InputDecoration(
+                            hintText: "DD/MM/YYYY",
+                            labelText: 'Buying Date',
+                            labelStyle: TextStyle(
+                              color: Color(0xFF979797),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFF66BF77)),
+                            ),
+                          ),
+                          onTap: () async {
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+
+                            buyDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2022),
+                                lastDate: DateTime.now());
+                            if (buyDate == null) buyDate = DateTime.now();
+                            _buyingDatecontroller.text =
+                                '${buyDate!.day}/${buyDate!.month}/${buyDate!.year}';
+                          },
+                        )),
                     Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: TextFormField(
-                            controller: _periodcontroller,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter Warranty Period';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                              labelText: 'Warranty Period (in months)',
-                              labelStyle: TextStyle(
-                                color: Color(0xFF979797),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF66BF77)),
-                              ),
-                            ))),
+                          controller: _periodcontroller,
+                          decoration: const InputDecoration(
+                            hintText: "DD/MM/YYYY",
+                            labelText: 'Warranty Till',
+                            labelStyle: TextStyle(
+                              color: Color(0xFF979797),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFF66BF77)),
+                            ),
+                          ),
+                          onTap: () async {
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+
+                            var WarrantyFinish = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2030));
+                            if (WarrantyFinish == null)
+                              WarrantyFinish = DateTime.now();
+                            _periodcontroller.text =
+                                '${WarrantyFinish!.day}/${WarrantyFinish!.month}/${WarrantyFinish!.year}';
+                          },
+                        )),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 5),
                       child: TextFormField(
@@ -183,6 +209,13 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         print('object');
+                        final d1 =
+                            (buyDate!.toUtc().millisecondsSinceEpoch / 1000)
+                                .toInt();
+                        final d2 =
+                            (WarrantyFinish!.toUtc().millisecondsSinceEpoch /
+                                    1000)
+                                .toInt();
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -190,19 +223,8 @@ class _HomePageState extends State<HomePage> {
                                       id: _idcontroller.text,
                                       productName: _namecontroller.text,
                                       modelName: _modelcontroller.text,
-                                      buyingDate:
-                                          DateTime.fromMillisecondsSinceEpoch(
-                                                  DateTime.now().day)
-                                              .toString(),
-                                      warrantyTill:
-                                          DateTime.fromMillisecondsSinceEpoch(
-                                                  DateTime.now().day +
-                                                      (30 *
-                                                          24 *
-                                                          60 *
-                                                          60 *
-                                                          1000))
-                                              .toString(),
+                                      buyingDate: d1.toString(),
+                                      warrantyTill: d2.toString(),
                                       description: _descriptioncontroller.text,
                                     )));
                       }

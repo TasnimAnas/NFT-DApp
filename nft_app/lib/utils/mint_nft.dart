@@ -113,7 +113,7 @@ class _NFTPageState extends State<NFTPage> {
       if (decoded != []) {
         print(decoded[1]);
         launchUrlString(
-            'https://opensea.io/assets/matic/0x68cbed2faae2b84119b3ce52844c37532651f5cf/${decoded[1]}',
+            'https://opensea.io/assets/matic/0xFb2aC437ca9d3efB217a48de4A0455d668D793aB/${decoded[1]}',
             mode: LaunchMode.externalApplication);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomePage()));
