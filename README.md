@@ -11,6 +11,12 @@ Our problem statement is: In this modern era, most paper documents can be verifi
 2. <b>Blockchain - Polygon</b>
 3. Mobile: Flutter
 
+# Project Overview
+1. <a href="https://www.canva.com/design/DAFRJRRP2aw/9cQiFHmAEu4MUk1Ivl5jrQ/edit?utm_content=DAFRJRRP2aw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"> Canva PPT </a>
+2. Hosted Website <a href="https://warranty-maker-dapp.herokuapp.com/">NFT DApp</a>
+3. Contract on <a href= "https://polygonscan.com/address/0xFb2aC437ca9d3efB217a48de4A0455d668D793aB">Polygonscan</a>
+4. NFTs created on this collection: <a href="https://opensea.io/collection/squarenft-gbuiszpdab">OpenSea</a>
+
 
 # TEAM MEMBERS:
 1. Tasnim Anas (TasnimAnas)
