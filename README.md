@@ -22,6 +22,22 @@ Our problem statement is: In this modern era, most paper documents can be verifi
 3. Contract on <a href= "https://polygonscan.com/address/0xFb2aC437ca9d3efB217a48de4A0455d668D793aB">Polygonscan</a>
 4. NFTs created on this collection: <a href="https://opensea.io/collection/squarenft-gbuiszpdab">OpenSea</a>
 
+# Workflow
+1. Go to the hosted website
+2. Select which one you are seller/customer
+
+<b> Seller:</b>
+1. Click on the connect button and connect Polygon Mainnet wallet through the metamask extension popup.
+2. After successful connection, you’ll be redirected to NFT minting form. Enter the product details.
+3. Click on the button to mint NFT
+4. Metamask will popup and ask for transection confirmation (As the project is deployed on Polygon Mainnet, you’ve to spend MATIC to do the transection)
+5. After the confirmation, NFT will be minted and you’ll be redirected to OpenSea link for the created NFT.
+6. Refresh NFT metadata if OpenSea don't shiw your inputted details in the first time.
+
+<b> Customer:</b>
+1. Click on connect button and connect Polygon Mainnent account through metamask extemsion popup
+2. After successful connection, you’ll see all the NFTs you own!
+
 
 # TEAM MEMBERS:
 1. Tasnim Anas (TasnimAnas)
